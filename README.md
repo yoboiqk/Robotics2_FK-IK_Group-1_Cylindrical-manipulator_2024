@@ -14,3 +14,11 @@ C. MATLAB and Python codes
 D. Tables for the comparison of Forward Kinematics and Inverse Kinematics in MATLAB and Python 
     
     The tables for the comparison of Forward Kinematics and Inverse Kinematics in MATLAB and Python are attached in the 2 folders for Forward Kinematics and Inverse Kinematics.
+
+Forward and Inverse Kinematics Calculator
+
+Forward Kinematics
+![435025790_1136330874478863_3449465622578931046_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/714b2218-d2da-4683-bd75-98e731f3e0cd)
+
+Inverse Knematics
+![434538575_397707273005578_5035392775236896064_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/1f63a5dd-fc5d-484f-a8a9-e0db76a5319f)
