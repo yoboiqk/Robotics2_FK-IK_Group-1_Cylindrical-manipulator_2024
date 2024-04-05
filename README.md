@@ -220,8 +220,20 @@ width="350" height="500"></p>
 
 #### Kinematic Diagram and D-H Frame of a Cylindrical Manipulator Tutorial Video
 
+Degrees of Freedom of Cylindrical Manipulator
+[https://drive.google.com/file/d/13uj8byQS8bBkjn4u64hty5m79-uSgNkN/view](https://www.youtube.com/watch?v=WWWzeSV_wBc)
 
+Kinematic Diagram and D-H Frame assignment of Cylindrical Manipulator
+https://www.youtube.com/watch?v=P3rrbfaN2_o
 
+D-H Parametric Table of Cylindrical Manipulator
+https://www.youtube.com/watch?v=p9YfJ1zX-qI
+
+Homogeneous Transformation Matrix of Cylindrical Manipulator
+https://www.youtube.com/watch?v=xFSNJ3DcHoM
+
+Inverse Kinematics of Cylindrical Manipulator
+https://www.youtube.com/watch?v=bmc5uaM3WRY
 <br>
 
 
