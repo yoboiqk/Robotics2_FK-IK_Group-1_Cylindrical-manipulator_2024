@@ -275,7 +275,7 @@ D. Tables for the comparison of Forward Kinematics and Inverse Kinematics in MAT
     
     The tables for the comparison of Forward Kinematics and Inverse Kinematics in MATLAB and Python are attached in the 2 folders for Forward Kinematics and Inverse Kinematics.
 
-Inverse Kinematics
+INVERSE KINEMATICS
 
 
 description:
