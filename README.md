@@ -276,6 +276,8 @@ D. Tables for the comparison of Forward Kinematics and Inverse Kinematics in MAT
     The tables for the comparison of Forward Kinematics and Inverse Kinematics in MATLAB and Python are attached in the 2 folders for Forward Kinematics and Inverse Kinematics.
 
 Inverse Kinematics
+
+
 description:
 Inverse kinematics is a computational technique used in robotics to determine the joint configurations required to achieve a desired end-effector position. It works backward from the target position, calculating the joint angles needed to reach it. This approach allows for precise control of robotic manipulators, such as arms or legs, in tasks like reaching, grasping, or walking. Inverse kinematics is crucial for programming robots to perform complex motions efficiently and accurately. It is widely applied in fields like manufacturing, animation, and virtual reality.
 
