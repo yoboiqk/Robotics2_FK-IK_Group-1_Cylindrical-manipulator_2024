@@ -145,6 +145,9 @@ ___
 
 #### Degrees of Freedom of a Cylindrical Manipulator Tutorial Video
 
+Degrees of Freedom of Cylindrical Manipulator
+[https://drive.google.com/file/d/13uj8byQS8bBkjn4u64hty5m79-uSgNkN/view](https://www.youtube.com/watch?v=WWWzeSV_wBc)
+
 
 <br>
 
@@ -220,8 +223,6 @@ width="350" height="500"></p>
 
 #### Kinematic Diagram and D-H Frame of a Cylindrical Manipulator Tutorial Video
 
-Degrees of Freedom of Cylindrical Manipulator
-[https://drive.google.com/file/d/13uj8byQS8bBkjn4u64hty5m79-uSgNkN/view](https://www.youtube.com/watch?v=WWWzeSV_wBc)
 
 Kinematic Diagram and D-H Frame assignment of Cylindrical Manipulator
 https://www.youtube.com/watch?v=P3rrbfaN2_o
@@ -273,6 +274,20 @@ C. MATLAB and Python codes
 D. Tables for the comparison of Forward Kinematics and Inverse Kinematics in MATLAB and Python 
     
     The tables for the comparison of Forward Kinematics and Inverse Kinematics in MATLAB and Python are attached in the 2 folders for Forward Kinematics and Inverse Kinematics.
+
+Inverse Kinematics
+description:
+Inverse kinematics is a computational technique used in robotics to determine the joint configurations required to achieve a desired end-effector position. It works backward from the target position, calculating the joint angles needed to reach it. This approach allows for precise control of robotic manipulators, such as arms or legs, in tasks like reaching, grasping, or walking. Inverse kinematics is crucial for programming robots to perform complex motions efficiently and accurately. It is widely applied in fields like manufacturing, animation, and virtual reality.
+
+![434559139_439864648417347_6146410814953658975_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/daf24fb4-54a4-4aad-b8b8-9c67f7419a42)
+
+
+![435120781_3795338840685390_1517760465757612076_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/90488127-c8b1-40c2-9fcf-cdb8cdcf79f7)
+
+
+![433767996_795192279149434_4209613197039878284_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/4e0fbef6-771b-4dc3-b0d9-aba3a1c5b528)
+
+
 
 Forward and Inverse Kinematics Calculator
 
