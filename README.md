@@ -203,7 +203,7 @@ When assigning frames, certain rules must be followed and these is the D-H Frame
 
 
 ### Kinematic Diagram and D-H Frame Assignment of Cylindrical Manipulator
-___
+
 
 <p align="center">
   <img src="![433076609_1081756836384490_8332537221389561292_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157770806/22e66f74-2351-4a77-b630-e40ac23f21bc)"
@@ -214,47 +214,182 @@ width="350" height="500"></p>
 </div>
 <br>
 
-<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+#### Kinematic Diagram and D-H Frame of a Cylindrical Manipulator Tutorial Video
+ 
+https://www.youtube.com/watch?v=P3rrbfaN2_o
 
 </p>
 <br>
 
 
-#### Kinematic Diagram and D-H Frame of a Cylindrical Manipulator Tutorial Video
+## V. D-H Parametric Table
+
+#### DH HARTENBERG NOTATION
+ 
+ There are steps that we need to follow in constructing the DH parametric tables. And these are the following: </p>
+
+ + **_STEP 1:_** ASSIGN FRAMES ACCORDING TO 4 DH FRAME RULES
+ + **_STEP 2:_** FILL OUT AND CONSTRUCT THE DH PARAMETRIC TABLE
+ + **_STEP 3:_** PLUG THE TABLE INTO HOMOGENEOUS TRANSFORMATION MATRIX FORM
+ + **_STEP 4:_** MULTIPLY THE MATRICES TOGETHER
+</p>
+
+<p align="center"> 
+
+**D-H PARAMETRIC TABLE**
+
+<div align="center">
+| $n$   | $\theta$ | $\alpha$ |    $r$    |    $d$    |
+| :---: |  :---:  |  :---:  |  :---:  |  :---:  |   
+|   1   |         |         |         |         |
+|   2   |         |         |         |         |
+|   3   |         |         |         |         |
+|   4   |         |         |         |         |
+</p>
+
+<div align="center">
+ 
+***Table.1 Example of D-H Parametric Table***
+ </p>
+
+ <div align="center">
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 1. shows the D-H Parametric table, where the columns denote the parameter types, and the rows correspond to the frames. **$\theta$** and **$\alpha$** signify rotational parameters in radians or degrees, while **$r$** and **$d$** denote position or the rotational parameters in units of length. This table facilitates the organization and representation of the kinematic properties essential for robotic manipulator analysis and control. </p>
+
+<div align="justify">
+ 
+To establish the D-H Parameters ( **$\theta$**, **$\alpha$**, **$r$** and **$d$**) for each joint, where:</p>
+
+ <div align="center">
+  
+| **$\theta$** | **$\alpha$** |    **$r$**    |    **$d$**    |
+|  :---:  |  :---:  |  :---:  |  :---:  |   
+| **$\theta$** Rotation around $z_{n-1}$ that is required to get $X_{n-1}$ to match the $x_{n}$, with the joint variable theta if joint is revolute/twisting joint.|  **$\alpha$** is the rotation around $x_{n}$ that is required to match $z_{n-1}$ to $z_{n}$.  |  **$r$** is the distance from the origin of $n-1$ and $n$ frames along the $z_{n-1}$ direction with the joint variable if the joint is prismatic.  |  **$d$** is the distance from the origin of $n-1$ and $n$ frames along the $x_{n}$ direction.  |
+</p>
+
+***Table.2 D-H Parameters***
+ </p>
+
+ <div align="justify">
+
+  
+Constructing the D-H Parametric Table of **Cylindrical Manipulator** (RPP):
+</p>
+  <div align="center">
+   
+| $n$   | $\theta$ | $\alpha$ |    $r$    |    $d$    |
+| :---: |  :---:  |  :---:  |  :---:  |  :---:  |   
+|   1   |   0° + $\theta_{1} $  |   0°  |  0  | $a_{1}$ |
+|   2   |     270°  |   270°  |   0   |   $a_{2}$ + $d_{2}$  |
+|   3   |      0°   |      0°   |     0 |  $a_{3}$ + $d_{3}$ |
+
+***Table.3 D-H Parametric Table of RPP***
+ </p>
 
 
-Kinematic Diagram and D-H Frame assignment of Cylindrical Manipulator
-https://www.youtube.com/watch?v=P3rrbfaN2_o
+  <div align="justify">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 3 shows the constructed DH parametric table of the cylindrical manipulator (RPP), serving as the framework for describing its kinematic properties. Through the relationships between each link and joint, the DH Parametric Table facilitates the analysis of the RPP Manipulator's motion. Additionally, it serves as a tool for conducting forward and inverse kinematics calculations accurately. </p>
 
-D-H Parametric Table of Cylindrical Manipulator
-https://www.youtube.com/watch?v=p9YfJ1zX-qI
-
-Homogeneous Transformation Matrix of Cylindrical Manipulator
-https://www.youtube.com/watch?v=xFSNJ3DcHoM
-
-Inverse Kinematics of Cylindrical Manipulator
-https://www.youtube.com/watch?v=bmc5uaM3WRY
 <br>
 
+## D-H Parametric Table for a Cylindrical Manipulator Tutorial Video
+
+https://www.youtube.com/watch?v=p9YfJ1zX-qI
+</p>
+
+## VI. Homogeneous Transformation Matrix
+
+<p align="justify">
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The transformation matrix enables us to determine the position and orientation of objects or points relative to one coordinate frame compared to the next frame. It holds significant importance in robotics, particularly for tasks such as solving forward and inverse kinematics problems, as well as the motion planning of the manipulator. Additionally, it serves as a valuable tool for ensuring robots move accurately. Essentially, it is used to describe a means of understanding the spatial relationships within a robotic system. </p>
 
 
+<div align="center">
+
+<img src="![HTM Formula](https://github.com/mFloriane/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157770806/98367669-a25e-4f63-943c-b7653fc6ccd4)" width="500" height="250">
+
+</p> 
+ 
+***Figure 4.*** HTM FORMULA
+
+<div align="justify">
+ 
+**Applying the formula and technique for calculating the Homogeneous Transformation Matrix**
+
+<div align="center">
+ 
+![434482213_357411239999561_2688189116293960321_n](https://github.com/mFloriane/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157770806/e9e02c1a-e295-405e-8164-bc1f35fc5c1a)</p>
+***Figure 5. Computed HTM of frame 1 Reference or relative to frame 0***
+
+![434412951_1012109243580128_574082681290142713_n](https://github.com/mFloriane/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157770806/e097f39e-3cc3-4f40-83b9-7895a9910154) </p>
+***Figure 6. Computed HTM of frame 2 Reference or relative to frame 1***
+
+![434398694_2130453037328390_8529062641091353398_n](https://github.com/mFloriane/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157770806/57df7d97-255d-44d6-870c-8d67720b0fc1) </p>
+***Figure 7. Computed HTM of frame 3 Reference or relative to frame 2***
+
+</div>
+<br>
+
+## Homogeneous Transformation Matrix for a Cylindrical Manipulator Tutorial Video
+https://www.youtube.com/watch?v=xFSNJ3DcHoM
 
 
+## VII.Inverse Kinematics
 
 
+<p align="justify">
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inverse kinematics is a computational technique used in robotics to determine the joint configurations required to achieve a desired end-effector position. It works backward from the target position, calculating the joint angles needed to reach it. This approach allows for precise control of robotic manipulators, such as arms or legs, in tasks like reaching, grasping, or walking. Inverse kinematics is crucial for programming robots to perform complex motions efficiently and accurately. It is widely applied in fields like manufacturing, animation, and virtual reality. </p>
+
+![434559139_439864648417347_6146410814953658975_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/daf24fb4-54a4-4aad-b8b8-9c67f7419a42)
 
 
+![435120781_3795338840685390_1517760465757612076_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/90488127-c8b1-40c2-9fcf-cdb8cdcf79f7)
 
 
+![433767996_795192279149434_4209613197039878284_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/4e0fbef6-771b-4dc3-b0d9-aba3a1c5b528)
+
+## Inverse Kinematics for a Cylindrical Manipulator Tutorial Video
+https://www.youtube.com/watch?v=bmc5uaM3WRY
+</p>
 
 
+## VIII.Forward and Inverse Kinematics Calculator
+
+Forward Kinematics
+![435025790_1136330874478863_3449465622578931046_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/714b2218-d2da-4683-bd75-98e731f3e0cd)
+
+Inverse Kinematics
+![434538575_397707273005578_5035392775236896064_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/1f63a5dd-fc5d-484f-a8a9-e0db76a5319f)
 
 
+### IX. References
 
+ <p align="justify">
+  
++ Prasad, A., Sharma, B., & Jito Vanualailai. (2017). Motion Control of a Pair of Cylindrical Manipulators in a Constrained 3-Dimensional Workspace. https://doi.org/10.1109/apwconcse.2017.00022
+‌</p>
 
++ Iliukhin, V. N., Mitkovskii, K. B., Bizyanova, D. A., & Akopyan, A. A. (2017). The Modeling of Inverse Kinematics for 5 DOF Manipulator. Procedia Engineering, 176, 498–505. https://doi.org/10.1016/j.proeng.2017.02.349
+</p>
 
++ Sai Vikas Maram, Kuruganti, Y. S., Chittawadigi, R. G., & Subir Kumar Saha. (2019). Effective Teaching and Learning of Homogenous Transformation Matrix using RoboAnalyzer Software. https://doi.org/10.1145/3352593.3352611
+</p>
 
++ Lin, W., Li, B., Yang, X., & Zhang, D. (2013). Modelling and Control of Inverse Dynamics for a 5-DOF Parallel Kinematic Polishing Machine. International Journal of Advanced Robotic Systems, 10(8), 314. https://doi.org/10.5772/54966
+</p>
+
+### X. Members
+<p align="justify">
+ 
++ Alido,Kevin F.
++ Jambalos, Queian Kim F.
++ Muñoz, Floriane A.
++ Rabino, John Rhey G.
++ Samson, Renzo M.
+
+</p>
+</br>
 
 
 
