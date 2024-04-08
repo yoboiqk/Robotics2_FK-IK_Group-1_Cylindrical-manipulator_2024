@@ -9,7 +9,7 @@
   * [V. D-H Parametric Table](#v-d-h-parametric-table)
   * [VI. Homogeneous Transformation Matrix](#vi-homogeneous-transformation-matrix)
   * [VII. Inverse Kinematics](#vii-inverse-kinematics)
-  * [VIII. Forward and Inverse Kinematics Calculator (Application)](#viii-forward-and-inverse-kinematics-calculator-application)
+  * [VIII. Forward and Inverse Kinematics Calculator](#viii-forward-and-inverse-kinematics-calculator-application)
   * [IX. References](#ix-references)
   * [X. Group Members](#x-group-members)
 <hr> 
@@ -239,6 +239,7 @@ https://www.youtube.com/watch?v=P3rrbfaN2_o
 **D-H PARAMETRIC TABLE**
 
 <div align="center">
+ 
 | $n$   | $\theta$ | $\alpha$ |    $r$    |    $d$    |
 | :---: |  :---:  |  :---:  |  :---:  |  :---:  |   
 |   1   |         |         |         |         |
@@ -354,7 +355,7 @@ https://www.youtube.com/watch?v=bmc5uaM3WRY
 </p>
 
 
-## VIII.Forward and Inverse Kinematics Calculator
+## VIII. Forward and Inverse Kinematics Calculator
 
 Forward Kinematics
 ![435025790_1136330874478863_3449465622578931046_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/714b2218-d2da-4683-bd75-98e731f3e0cd)
@@ -363,7 +364,7 @@ Inverse Kinematics
 ![434538575_397707273005578_5035392775236896064_n](https://github.com/yoboiqk/Robotics2_FK-IK_Group-1_Cylindrical-manipulator_2024/assets/157704349/1f63a5dd-fc5d-484f-a8a9-e0db76a5319f)
 
 
-### IX. References
+## IX.References
 
  <p align="justify">
   
@@ -379,7 +380,7 @@ Inverse Kinematics
 + Lin, W., Li, B., Yang, X., & Zhang, D. (2013). Modelling and Control of Inverse Dynamics for a 5-DOF Parallel Kinematic Polishing Machine. International Journal of Advanced Robotic Systems, 10(8), 314. https://doi.org/10.5772/54966
 </p>
 
-### X. Members
+## X.Group Members
 <p align="justify">
  
 + Alido,Kevin F.
