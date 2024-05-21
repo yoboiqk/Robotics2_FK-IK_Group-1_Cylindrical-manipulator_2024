@@ -20,47 +20,46 @@ def reset():
     """
     It clears all the text boxes.
     """
-    a1_E.delete(0, END)
-    a2_E.delete(0, END)
-    a3_E.delete(0, END)
-    a4_E.delete(0, END)
+    a1_E.delete(0,END)
+    a2_E.delete(0,END)
+    a3_E.delete(0,END)
 
-    d1_E.delete(0, END)
-    t2_E.delete(0, END)
-    t3_E.delete(0, END)
-    
-    X_E.delete(0, END)
-    Y_E.delete(0, END)
-    Z_E.delete(0, END)
+    t1_E.delete(0,END)
+    d2_E.delete(0,END)
+    d3_E.delete(0,END)
 
+    X1_E.delete(0,END)
+    Y1_E.delete(0,END)
+    Z1_E.delete(0,END)
+
+def deg_rad(T):
+    return (T/180)*np.pi
 def f_k():
  
     """
     It calculates the forward kinematics of the robot.
     """
-    a1 = float(a1_E.get())
-    a2 = float(a2_E.get())
-    a3 = float(a3_E.get())
-    a4 = float(a4_E.get())
+    a1=float(a1_E.get())
+    a2=float(a2_E.get())
+    a3=float(a3_E.get())
 
-    d1 = float(d1_E.get())
-    T2 = float(t2_E.get())
-    T3 = float(t3_E.get())
+    t1=float(t1_E.get())
+    d2=float(d2_E.get())
+    d3=float(d3_E.get())
 
+    #convert rotation angles
+    t1=(t1/180)*np.pi
 
-    T2 = (T2/180.0)*np.pi # Theta 2 in radians
-    T3 = (T3/180.0)*np.pi # Theta 3 in radians
+    PT=[[(0.0/180.0)*np.pi+t1,(0.0/180.0)*np.pi,0,a1],  
+    [(270.0/180.0)*np.pi,(270.0/180.0)*np.pi,0,a2+d2],
+    [(0.0/180.0)*np.pi,(0.0/180.0)*np.pi,0,a3+d3]]   
 
-    PT = [[(0.0/180.0)*np.pi,(0.0/180.0)*np.pi,0,a1+d1],
-          [T2,(0.0/180.0)*np.pi,a2,0],
-          [T3,(0.0/180.0)*np.pi,a4,a3]]
-
+    #HTM Formulae
     i = 0
     H0_1 = [[np.cos(PT[i][0]),-np.sin(PT[i][0])*np.cos(PT[i][1]),np.sin(PT[i][0])*np.sin(PT[i][1]),PT[i][2]*np.cos(PT[i][0])],
             [np.sin(PT[i][0]),np.cos(PT[i][0])*np.cos(PT[i][1]),-np.cos(PT[i][0])*np.sin(PT[i][1]),PT[i][2]*np.sin(PT[i][0])],
             [0,np.sin(PT[i][1]),np.cos(PT[i][1]),PT[i][3]],
             [0,0,0,1]]
-
     i = 1
     H1_2 = [[np.cos(PT[i][0]),-np.sin(PT[i][0])*np.cos(PT[i][1]),np.sin(PT[i][0])*np.sin(PT[i][1]),PT[i][2]*np.cos(PT[i][0])],
             [np.sin(PT[i][0]),np.cos(PT[i][0])*np.cos(PT[i][1]),-np.cos(PT[i][0])*np.sin(PT[i][1]),PT[i][2]*np.sin(PT[i][0])],
@@ -73,25 +72,41 @@ def f_k():
             [0,np.sin(PT[i][1]),np.cos(PT[i][1]),PT[i][3]],
             [0,0,0,1]]
 
-    # Position/Translation Joints
+    #print("H0_1 = ")
+    #H0_1 = np.array(np.round(H0_1,3))
+    #print(H0_1)
+
+    #print("H1_2 = ")
+    #H1_2 = np.array(np.round(H1_2,3))
+    #print(H1_2)
+
+    #print("H2_3 = ")
+    #H2_3 = np.array(np.round(H2_3,3))
+    #print(H2_3)
     H0_1 = np.matrix(H0_1) 
 
-    H1_2 = np.matrix(H1_2) 
+    H0_2=np.dot(H0_1,H1_2)
+    H0_3=np.dot(H0_2,H2_3)  
+    #print("H0_3 = ")
+    #H0_3=(np.array(np.around(H0_3,3)))
+    #print(H0_3)
+        
 
-    H2_3 = np.matrix(H2_3) 
+    H0_2=np.dot(H0_1,H1_2)
+    H0_3=np.dot(H0_2,H2_3)  
+    H0_3=np.array(H0_3)
 
-    H0_2 = np.dot(H0_1,H1_2)
-    H0_3 = np.dot(H0_2,H2_3)
+    X0_3 = H0_3 [0,3]
+    X1_E.delete(0,END)
+    X1_E.insert(0,np.around(X0_3,3))
 
-    X0_3 = H0_3[0,3]
-    X_E.delete(0,END)
-    X_E.insert(0,np.around(X0_3,3))
-    Y0_3 =H0_3[1,3]
-    Y_E.delete(0,END)
-    Y_E.insert(0,np.around(Y0_3,3))
-    Z0_3 =H0_3[2,3]
-    Z_E.delete(0,END)
-    Z_E.insert(0,np.around(Z0_3,3))
+    Y0_3 = H0_3 [1,3]
+    Y1_E.delete(0,END)
+    Y1_E.insert(0,np.around(Y0_3,3))
+
+    Z0_3 = H0_3 [2,3]
+    Z1_E.delete(0,END)
+    Z1_E.insert(0,np.around(Z0_3,3))
 
 ## Jacobian Matrix
 
@@ -103,58 +118,52 @@ def f_k():
     #1. Linear / Prismatic Vectors
     Z_1 = [[0],[0],[1]] # The [0,0,1] vector
 
-     #Row 1 to 3, Column 1
-    J1 = [[1,0,0],[0,1,0],[0,0,1]]
-    J1 = np.dot(J1,Z_1)
+      #Row 1 to 3, Column 1
+    J1a = [[1,0,0],
+           [0,1,0],
+           [0,0,1]]
+    J1a = np.dot(J1a,Z_1)
+    J1a = np.matrix(J1a)
+
+    J1b_1 = H0_3[0:3,3:]
+    J1b_1 = np.matrix(J1b_1)
+    J1b = J1b_1
+
+
+    J1 = [[(J1a[1,0]*J1b[2,0])-(J1a[2,0]*J1b[1,0])],
+          [(J1a[2,0]*J1b[0,0])-(J1a[0,0]*J1b[2,0])],
+          [(J1a[0,0]*J1b[1,0])-(J1a[1,0]*J1b[0,0])]]
+
     J1 = np.matrix(J1)
 
-     #Row 1 to 3, Column 2
-    J2a = H0_1[0:3,0:3]
-    J2a = np.dot(J2a,Z_1)
 
-    J2b_1 = H0_3[0:3,3:]
-    J2b_1 = np.matrix(J2b_1)
+    #Row 1 to 3, Column 2
 
-    J2b_2 = H0_1[0:3,3:]
-    J2b_2 = np.matrix(J2b_2)
+    J2 = H0_1[0:3,0:3] #R0_1
+    J2 = np.dot(J2,Z_1)
+    J2=np.matrix(J2)
 
-    J2b = J2b_1 - J2b_2
 
-    J2 = [[(J2a[1,0]*J2b[2,0])-(J2a[2,0]*J2b[1,0])],
-            [(J2a[2,0]*J2b[0,0])-(J2a[0,0]*J2b[2,0])],
-            [(J2a[0,0]*J2b[1,0])-(J2a[1,0]*J2b[0,0])]]
-    
-    J2 = np.matrix(J2)
+    #Row 1 to 3, Column 3
 
-     #Row 1 to 3, Column 3
-    J3a = H0_2[0:3,0:3]
-    J3a = np.dot(J3a,Z_1)
-
-    J3b_1 = H0_3[0:3,3:]
-    J3b_1 = np.matrix(J3b_1)
-
-    J3b_2 = H0_2[0:3,3:]
-    J3b_2 = np.matrix(J3b_2)
-
-    J3b = J3b_1 - J3b_2
-
-    J3 = [[(J3a[1,0]*J3b[2,0])-(J3a[2,0]*J3b[1,0])],
-        [(J3a[2,0]*J3b[0,0])-(J3a[0,0]*J3b[2,0])],
-        [(J3a[0,0]*J3b[1,0])-(J3a[1,0]*J3b[0,0])]]
-
+    J3 = H0_2[0:3,0:3]  #R0_2
+    J3 = np.dot(J3,Z_1)
     J3 = np.matrix(J3)
 
-    #2. Rotation / Orientation Vectors
+    #Row 4 to 6, Column 1
 
-        #Row 4 to 6, Column 1
-    J4 = [[0],[0],[0]]
+    J4 = J1a
     J4 = np.matrix(J4)
 
-        #Row 4 to 6, Column 2
-    J5 = J2a
+
+    #Row 4 to 6, Column 2
+
+    J5=[[0],[0],[0]]
     J5 = np.matrix(J5)
-        #Row 4 to 6, Column 3
-    J6 = J3a
+
+    #Row 4 to 6, Column 3
+
+    J6=[[0],[0],[0]]
     J6 = np.matrix(J6)
 
     #3. Concatenated Jacobian Matrix
@@ -271,85 +280,95 @@ def f_k():
 
     # Create Links
     CYLINDRICAL = DHRobot([
-            PrismaticDH(0,0,(0/180)*np.pi,a1/100,qlim=[0,(30/100)]),
-            RevoluteDH(0,a2/100,(0/180)*np.pi,0,qlim=[(-90/180)*np.pi,(90/180)*np.pi]),
-            RevoluteDH(a3/100,0,(0/180)*np.pi,0,qlim=[(-90/180)*np.pi,(90/180)*np.pi]),
-            PrismaticDH(0,a4/100,0,0,qlim=[0,0])
+            RevoluteDH(a1/100,0,(0.0/180.0)*np.pi,(0.0/180.0)*np.pi,qlim=[-np.pi/2,np.pi/2]),
+            PrismaticDH(0,0,(270/180.0)*np.pi,a2/100,qlim=[0,(30/100)]),
+            PrismaticDH(0,0,(0.0/180.0)*np.pi,a3/100,qlim=[0,(30/100)]),
 
-        ], name='CYLINDRICAL')
+        ], name="CYLINDRICAL")
+    print("CYLINDRICAL")
+        
+    q0 = np.array([0,0,0]) ## origin of end effector
 
-    #plot joints
-    q1 = np.array([d1/100,T2,T3,0])
+    q1 = np.array([deg_rad(float(t1_E.get())),
+                   (float(d2_E.get()))/100,
+                   float((d3_E.get()))/100,])
+    
+    traj1 = rtb.jtraj(q0, q1, 25)
 
-    #plot scale
-    x1 = -0.5
-    x2 = 0.5
-    y1 = -0.5
-    y2 = 0.5
-    z1 = 0.0
-    z2 = 0.5     
+    CYLINDRICAL.plot(traj1.q, limits = [-.7,.7,-.7,.7,0,.7],block=True)
 
-    # Plot commands
-    CYLINDRICAL.plot(q1,limits=[x1,x2,y1,y2,z1,z2],block=True)
 
 def i_k():
+
     #Inverse Kinematics Using Graphical Method
 
     #link lengths in cm
     a1 = float(a1_E.get())
     a2 = float(a2_E.get())
     a3 = float(a3_E.get())
-    a4 = float(a4_E.get())
 
     #Position Vector in cm
-    xe = float(X_E.get())
-    ye = float(Y_E.get())
-    ze = float(Z_E.get())
+    xe = float(X1_E.get())
+    ye = float(Y1_E.get())
+    ze = float(Z1_E.get())
 
-    # To solve for Theta 2 or Th2
-    phi2 = np.arctan(ye/xe) #1
-    r1 = np.sqrt(ye**2 + xe**2) #2
-    phi1 = np.arccos((a4**2 - a2**2 - r1**2)/(-2 * a2 * r1)) #3
-    Th2 = phi2 - phi1 #4
 
-    # To solve for Theta 3 or Th3
-    phi3 = np.arccos((r1**2 - a2**2 - a4**2)/(-2 * a2 * a4)) #5
-    Th3 = np.pi - phi3 #6
+    #Inverse Kinematics Solution using Graphical Method
 
-    # To solve for D1
-    D1 = ze - a1 - a3 #7
+    #Solution 1
+    if xe == 0 and ye<0:
+        t2=-90
+        t1=(-90*np.pi)/180
 
-    d1_E.delete(0,END)
-    d1_E.insert(0,np.around(D1,3))
+    elif xe==0 and ye>0:
+        t2=90
+        t1=(90*np.pi)/180
 
-    t2_E.delete(0,END)
-    t2_E.insert(0,np.around(Th2*180/np.pi,3))
+    else:
+        t1 = np.arctan(ye/xe)
+        t2 = t1*180/np.pi
 
-    t3_E.delete(0,END)
-    t3_E.insert(0,np.around(Th3*180/np.pi,3))
 
-    # Create Links
+    #Solution 2
+    d3=np.sqrt(ye**2+xe**2)-a3
+
+    #Solution 3
+    d2=ze-a2-a1
+
+    t1_E.delete(0,END)
+    t1_E.insert(0,np.around(t2,3))
+
+    d2_E.delete(0,END)
+    d2_E.insert(0,np.around(d2,3))
+
+    d3_E.delete(0,END)
+    d3_E.insert(0,np.around(d3,3))
+
     CYLINDRICAL = DHRobot([
-            PrismaticDH(0,0,(0/180)*np.pi,a1/100,qlim=[0,(30/100)]),
-            RevoluteDH(0,a2/100,(0/180)*np.pi,0,qlim=[(-90/180)*np.pi,(90/180)*np.pi]),
-            RevoluteDH(a3/100,0,(0/180)*np.pi,0,qlim=[(-90/180)*np.pi,(90/180)*np.pi]),
-            PrismaticDH(0,a4/100,0,0,qlim=[0,0])
+            RevoluteDH(a1/100,0,(0.0/180.0)*np.pi,(0.0/180.0)*np.pi,qlim=[-np.pi/2,np.pi/2]),
+            PrismaticDH(0,0,(270/180.0)*np.pi,a2/100,qlim=[0,(30/100)]),
+            PrismaticDH(0,0,(0.0/180.0)*np.pi,a3/100,qlim=[0,(30/100)]),
 
-        ], name='CYLINDRICAL')
+        ], name="CYLINDRICAL")
+    
+    print("CYLINDRICAL")
 
-    #plot joints
-    q1 = np.array([D1/100,Th2,Th3,0])
+    def deg_rad(T):
+        return (T/180)*np.pi
+    
+    q0_2= float((d2_E.get()))/100
+    
+    q0_3 = float((d3_E.get()))/100
 
-    #plot scale
-    x1 = -0.5
-    x2 = 0.5
-    y1 = -0.5
-    y2 = 0.5
-    z1 = 0.0
-    z2 = 0.5     
+    q0 = np.array([0,0,0]) ## origin of end effector
 
-    # Plot commands
-    CYLINDRICAL.plot(q1,limits=[x1,x2,y1,y2,z1,z2],block=True)
+    q1 = np.array([deg_rad(float(t1_E.get())),
+                q0_2,
+                q0_3,])
+    
+    traj1 = rtb.jtraj(q0, q1, 25)
+
+    CYLINDRICAL.plot(traj1.q, limits = [-.7,.7,-.7,.7,0,.7],block=True)
 
 # Link Lengths and Joint Variables Frame
 FI = LabelFrame(gui,text="Link Lengths and Joint Variables",font=(5))
@@ -358,37 +377,63 @@ FI.grid(row=0,column=0)
 # The code below is creating a label frame and 
 # then creating labels and entries for the link lengths.
 #Link lengths
-a1 = Label(FI,text=("a1 = "),font=(10))
-a1_E = Entry(FI,width=5,font=(10))
-cm1 = Label(FI,text=("cm"),font=(10))
-
-a2 = Label(FI,text=("a2 = "),font=(10))
-a2_E = Entry(FI,width=5,font=(10))
-cm2 = Label(FI,text=("cm"),font=(10))
-
-a3 = Label(FI,text=("a3 = "),font=(10))
-a3_E = Entry(FI,width=5,font=(10))
-cm3 = Label(FI,text=("cm"),font=(10))
-
-a4 = Label(FI,text=("a4 = "),font=(10))
-a4_E = Entry(FI,width=5,font=(10))
-cm4 = Label(FI,text=("cm"),font=(10))
-
+a1=Label(FI,text=" a1 ", font=(10),)
 a1.grid(row=0,column=0)
+
+a1_E=Entry(FI,width=5, font=(10),)   
 a1_E.grid(row=0,column=1)
+
+cm1=Label(FI,text=("cm "),font=(10),)
 cm1.grid(row=0,column=2)
 
+
+a2=Label(FI,text=" a2 ", font=(10),)
 a2.grid(row=1,column=0)
+
+
+a2_E=Entry(FI,width=5, font=(10),)
 a2_E.grid(row=1,column=1)
+
+cm2=Label(FI,text=("cm "),font=(10),)
 cm2.grid(row=1,column=2)
 
+
+a3=Label(FI,text=" a3 ", font=(10),)
 a3.grid(row=2,column=0)
+
+a3_E=Entry(FI,width=6, font=(10))
 a3_E.grid(row=2,column=1)
+
+cm3=Label(FI,text=("cm "),font=(10),)
 cm3.grid(row=2,column=2)
 
-a4.grid(row=3,column=0)
-a4_E.grid(row=3,column=1)
-cm4.grid(row=3,column=2)
+
+t1=Label(FI,text=" θ1 ", font=(10),)
+t1.grid(row=0,column=3)
+
+t1_E=Entry(FI,width=5, font=(10))
+t1_E.grid(row=0,column=4)
+
+deg1=Label(FI,text=(" ° "),font=(10),)
+deg1.grid(row=0,column=5)
+
+d2=Label(FI,text=" d2 ", font=(10))
+d2.grid(row=1,column=3)
+
+d2_E=Entry(FI,width=5, font=(10))
+d2_E.grid(row=1,column=4)
+
+cm5=Label(FI,text=("cm "),font=(10),)
+cm5.grid(row=1,column=5)
+
+d3=Label(FI,text=" d3 ", font=(10),)
+d3.grid(row=2,column=3)
+
+d3_E=Entry(FI,width=5, font=(10))
+d3_E.grid(row=2,column=4)
+
+cm6=Label(FI,text=("cm "),font=(10),)
+cm6.grid(row=2,column=5)
 
 # The code below is creating a label frame and 
 # then creating labels and entries for the Joint Variables.
@@ -441,29 +486,34 @@ PV = LabelFrame(gui,text="Position Vectors",font=(5))
 PV.grid(row=2,column=0)
 
 # Position Vector
-X = Label(PV,text=("X = "),font=(10))
-X_E = Entry(PV,width=8,font=(10))
-cm8 = Label(PV,text=("cm"),font=(10))
+PV = LabelFrame(gui,text="Position Vector")
+PV.grid(row=2,column=0)
 
-Y = Label(PV,text=("Y = "),font=(10))
-Y_E = Entry(PV,width=8,font=(10))
-cm9 = Label(PV,text=("cm"),font=(10))
+X1=Label(PV,text=" X1 = ")
+X1_E=Entry(PV,width=5)
+cm9=Label(PV,text=("cm "))
 
-Z = Label(PV,text=("Z = "),font=(10))
-Z_E = Entry(PV,width=8,font=(10))
-cm10 = Label(PV,text=("cm"),font=(10))
+X1.grid(row=0,column=0)
+X1_E.grid(row=0,column=1)
+cm9.grid(row=0,column=2)
 
-X.grid(row=0,column=0)
-X_E.grid(row=0,column=1)
-cm8.grid(row=0,column=2)
 
-Y.grid(row=1,column=0)
-Y_E.grid(row=1,column=1)
-cm9.grid(row=1,column=2)
+Y1=Label(PV,text=" Y1 = ")
+Y1_E=Entry(PV,width=5, )
+cm7=Label(PV,text=("cm "))
 
-Z.grid(row=2,column=0)
-Z_E.grid(row=2,column=1)
-cm10.grid(row=2,column=2)
+Y1.grid(row=1,column=0)
+Y1_E.grid(row=1,column=1)
+cm7.grid(row=1,column=2)
+
+Z1=Label(PV,text=" Z1= ")
+Z1_E=Entry(PV,width=5, )
+cm8=Label(PV,text=("cm "))
+
+Z1.grid(row=2,column=0)
+Z1_E.grid(row=2,column=1)
+cm8.grid(row=2,column=2)
+
 
 # image frame
 img = PhotoImage(file="cylindrical")
